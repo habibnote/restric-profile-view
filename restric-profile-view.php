@@ -28,6 +28,7 @@ final class RPV{
     */
     private function __construct() {
         $this->include();
+        $this->define();
         $this->hooks();
     }
 
@@ -39,8 +40,17 @@ final class RPV{
     }
 
     /**
+     * Define all constant
+    */
+    private function define() {
+        define( 'RPV', __FILE__ );
+        define( 'RPV_DIR', dirname( RPV ) );
+        define( 'RPV_ASSET', plugins_url( 'assets', CF7S ) );
+    }
+
+    /**
      * All Hooks
-     */
+    */
     private function hooks() {
         
         //kick of shortcode
@@ -49,7 +59,7 @@ final class RPV{
 
     /**
      * Singleton Instance
-     */
+    */
     static function get_rpv() {
         
         if( ! self::$instance ) {
