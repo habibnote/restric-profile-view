@@ -45,7 +45,7 @@ final class RPV{
     private function define() {
         define( 'RPV', __FILE__ );
         define( 'RPV_DIR', dirname( RPV ) );
-        define( 'RPV_ASSET', plugins_url( 'assets', CF7S ) );
+        define( 'RPV_ASSET', plugins_url( 'assets', RPV ) );
     }
 
     /**
