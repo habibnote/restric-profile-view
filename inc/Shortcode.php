@@ -27,6 +27,7 @@ class Shortcode {
     function rpv_main_shortcode() {
         
         include_once( RPV_DIR . "/parts/form.php" );
+        include_once( RPV_DIR . "/parts/form-processig.php" );
     }
 
 }
