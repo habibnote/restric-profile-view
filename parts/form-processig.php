@@ -1,4 +1,9 @@
 <?php 
+
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    require_once ABSPATH . 'wp-admin/includes/media.php';
+
     if( isset( $_POST['rpv-form-submit'] ) ){
         if( wp_verify_nonce( $_POST['_wpnonce'], 'rpv_nonce' ) ) {
 
@@ -19,8 +24,14 @@
             $rpv_countries_tar      = sanitize_text_field( $_POST['rpv-countries-tar'] ) ?? '';
             $rpv_industriy_sector   = sanitize_text_field( $_POST['rpv-industriy-sector'] ) ?? '';
             $rpv_network_event      = sanitize_text_field( $_POST['rpv-network-event'] ) ?? '';
-            // $rpv_logo               = sanitize_text_field( $_POST['rpv-logo'] ) ?? '';
-            // $rpv_profile_pic        = sanitize_text_field( $_POST['rpv-profile-pic'] ) ?? '';
+            
+            //retrive logo and save it on wordpress media
+            $rpv_logo               = $_FILES['rpv-logo'] ?? '';
+            $rpv_logo_id            = rvp_get_attachment_id( $rpv_logo );
+
+            // retrive proflie pci and save it on wordpress media
+            $rpv_profile_pic        = $_FILES['rpv-profile-pic'] ?? '';
+            $rpv_profile_pic_id     = rvp_get_attachment_id(  $rpv_profile_pic );
 
             /**
              * New Post Array
@@ -52,6 +63,10 @@
                 update_field( 'countries_targeted', $rpv_countries_tar, $post_id );
                 update_field( 'industry_sectors', $rpv_industriy_sector, $post_id );
                 update_field( 'networking_events_planned_to_attend',  $rpv_network_event, $post_id );
+
+                //Update images
+                update_field( 'logo', $rpv_logo_id, $post_id );
+                update_field( 'profile_pic', $rpv_profile_pic_id, $post_id );
             }
 
             echo "Post has been created";

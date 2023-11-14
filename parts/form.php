@@ -1,5 +1,5 @@
 <div class="rpv-form-container">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
 
         <div class="rpv-row">
             <label for="rpv-title"> <?php _e( 'Title:', 'restric-p-v' );?></label>
@@ -102,7 +102,7 @@
             </div>
             <div class="rpv-single-row">
                 <label for="rpv-profile-pic"> <?php _e( 'Upload Profile Pic:', 'restric-p-v' );?></label>
-                <input type="file" name="pv-profile-pic" id="pv-profile-pic">
+                <input type="file" name="rpv-profile-pic" id="rpv-profile-pic">
             </div>
 
         </div>
