@@ -26,8 +26,16 @@ final class RPV{
     /**
      * Class Contructor
     */
-    function __construct() {
+    private function __construct() {
+        $this->include();
         $this->hooks();
+    }
+
+    /**
+     * Include all files
+     */
+    private function include() {
+        require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
     }
 
     /**
@@ -35,6 +43,8 @@ final class RPV{
      */
     private function hooks() {
         
+        //kick of shortcode
+        new Inc\Shortcode();
     }
 
     /**

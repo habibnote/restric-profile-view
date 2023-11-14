@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Restric_Profile_View\\" : "",
+            "Restric_Profile_View\\Inc\\" : "inc/"
+        }
+    }
+}
