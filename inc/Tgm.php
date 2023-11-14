@@ -8,6 +8,7 @@ class Tgm {
      */
     function __construct() {
         add_action( 'tgmpa_register', [$this,'rpv_register_required_plugins'] );
+        // add_filter( 'acf/settings/show_admin', '__return_false' );
     }
 
     /**
