@@ -19,10 +19,42 @@
             $rpv_countries_tar      = sanitize_text_field( $_POST['rpv-countries-tar'] ) ?? '';
             $rpv_industriy_sector   = sanitize_text_field( $_POST['rpv-industriy-sector'] ) ?? '';
             $rpv_network_event      = sanitize_text_field( $_POST['rpv-network-event'] ) ?? '';
-            $rpv_logo               = sanitize_text_field( $_POST['rpv-logo'] ) ?? '';
-            $rpv_profile_pic        = sanitize_text_field( $_POST['rpv-profile-pic'] ) ?? '';
+            // $rpv_logo               = sanitize_text_field( $_POST['rpv-logo'] ) ?? '';
+            // $rpv_profile_pic        = sanitize_text_field( $_POST['rpv-profile-pic'] ) ?? '';
 
-            
+            /**
+             * New Post Array
+             */
+            $new_post = array(
+                'post_title'    => $rpv_name,
+                'post_content'  => '',
+                'post_status'   => 'draft',
+                'post_type'     => 'profiles'
+            );
+
+            $post_id = wp_insert_post($new_post);
+
+            if( $post_id ) {
+                update_field( 'title', $rpv_title, $post_id );
+                update_field( 'name', $rpv_name, $post_id );
+                update_field( 'company', $rpv_company, $post_id );
+                update_field( 'address', $rpv_addr, $post_id );
+                update_field( 'city', $rpv_city, $post_id );
+                update_field( 'country', $rpv_country, $post_id );
+                update_field( 'job_title', $rpv_job_title, $post_id );
+                update_field( 'email', $rpv_email, $post_id );
+                update_field( 'telecom', $rpv_telicom, $post_id );
+                update_field( 'mobile', $rpv_mobile, $post_id );
+                update_field( 'company_profile', $rpv_title, $post_id );
+                update_field( 'key_competitors_in_africa', $rpv_key_com, $post_id );
+                update_field( 'business_partnerships_sought', $rpv_business_partner, $post_id );
+                update_field( 'projects_targeted_for_investments', $rpv_project_tar, $post_id );
+                update_field( 'countries_targeted', $rpv_countries_tar, $post_id );
+                update_field( 'industry_sectors', $rpv_industriy_sector, $post_id );
+                update_field( 'networking_events_planned_to_attend',  $rpv_network_event, $post_id );
+            }
+
+            echo "Post has been created";
         }
     }
 ?>
