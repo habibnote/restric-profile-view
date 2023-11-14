@@ -6,7 +6,7 @@
             <input type="text" placeholder="Mr, Ms, Mrs, Dr" id="rpv-title">
         </div>
 
-        <div class="rpv-row">
+        <div class="rpv-row rpv-mult-cols">
 
             <div class="rpv-single-row">
                 <label for="rpv-name"> <?php _e( 'Name: <span class="rpv-req">*</span>', 'restric-p-v' );?></label>
@@ -19,7 +19,7 @@
 
         </div>
 
-        <div class="rpv-row">
+        <div class="rpv-row rpv-mult-cols-3">
 
             <div class="rpv-single-row">
                 <label for="rpv-addr"> <?php _e( 'Address - street:', 'restric-p-v' );?></label>
@@ -46,7 +46,7 @@
             <input type="text" id="rpv-email" required>
         </div>
 
-        <div class="rpv-row">
+        <div class="rpv-row rpv-mult-cols">
 
             <div class="rpv-single-row">
                 <label for="rpv-telicom"> <?php _e( 'Telicom:', 'restric-p-v' );?></label>
@@ -65,7 +65,7 @@
         </div>
 
         <!--submit button  -->
-        <button type="submit" id="rpv-form-submit">submit</button>
+        <button type="submit" class="rpv-submit-btn" id="rpv-form-submit">submit</button>
 
     </form>
 </div>

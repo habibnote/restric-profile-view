@@ -1,4 +1,64 @@
 /*start shortcode Form Css*/
 .rpv-form-container{
-    background: red;
+    width: 100%;
+}
+.rpv-form-container .rpv-row{
+    width: 100%;
+    margin-bottom: 30px;
+}
+.rpv-form-container .rpv-row.rpv-mult-cols, .rpv-form-container .rpv-row.rpv-mult-cols-3{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.rpv-form-container .rpv-row.rpv-mult-cols .rpv-single-row{
+    width: 48%;
+}
+.rpv-form-container .rpv-row.rpv-mult-cols-3 .rpv-single-row{
+    width: 31%;
+}
+.rpv-form-container .rpv-row label{
+    color: #000;
+    font-size: 16px;
+    line-height: 1.3;
+    text-transform: capitalize;
+}
+.rpv-form-container .rpv-row label .rpv-req{
+    color:#ff0000;
+}
+.rpv-form-container .rpv-row input{
+    width: 100%;
+    border:none;
+    background-color: transparent;
+    border-bottom: 2px dotted #000;
+    color: #333;
+    line-height: 1.3;
+    padding: 6px 10px;
+    outline:0;
+}
+.rpv-form-container .rpv-row textarea{
+    width: 100%;
+    border:none;
+    background-color: transparent;
+    color: #333;
+    line-height: 1.3;
+    padding: 6px 10px;
+    outline:0;
+    border: 1px solid #ccc;
+    height: 120px;
+}
+.rpv-form-container .rpv-row input::placeholder{
+    border-radius: 2px;
+    color: #333;
+    font-size: 16px;
+    border: 1px solid #ccc;
+}
+.rpv-form-container .rpv-submit-btn{
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: #333;
+    padding: 10px 15px;
+    text-transform: capitalize;
+    font-size: 16px;
 }
