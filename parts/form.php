@@ -45,6 +45,17 @@
             <label for="rpv-email"> <?php _e( 'Email Address:  <span class="rpv-req">*</span>', 'restric-p-v' );?></label>
             <input type="email" name="rpv-email" id="rpv-email" required>
         </div>
+                
+        <?php
+            if( ! is_user_logged_in() ) {
+                ?>
+                    <div class="rpv-row">
+                        <label for="rpv-password"> <?php _e( 'Password:  <span class="rpv-req">*</span>', 'restric-p-v' );?></label>
+                        <input type="password" name="rpv-password" id="rpv-password" placeholder="It will be your Login Password" required>
+                    </div>
+                <?php 
+            }
+        ?>
 
         <div class="rpv-row rpv-mult-cols">
 

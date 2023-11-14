@@ -1,8 +1,8 @@
 <?php 
 
-    require_once ABSPATH . 'wp-admin/includes/image.php';
-    require_once ABSPATH . 'wp-admin/includes/file.php';
-    require_once ABSPATH . 'wp-admin/includes/media.php';
+    // require_once ABSPATH . 'wp-admin/includes/image.php';
+    // require_once ABSPATH . 'wp-admin/includes/file.php';
+    // require_once ABSPATH . 'wp-admin/includes/media.php';
 
     if( isset( $_POST['rpv-form-submit'] ) ){
         if( wp_verify_nonce( $_POST['_wpnonce'], 'rpv_nonce' ) ) {
@@ -15,6 +15,7 @@
             $rpv_country            = sanitize_text_field( $_POST['rpv-country'] ) ?? '';
             $rpv_job_title          = sanitize_text_field( $_POST['rpv-job-title'] ) ?? '';
             $rpv_email              = sanitize_text_field( $_POST['rpv-email'] ) ?? '';
+            $rpv_password           = sanitize_text_field( $_POST['rpv-password'] ) ?? '';
             $rpv_telicom            = sanitize_text_field( $_POST['rpv-telicom'] ) ?? '';
             $rpv_mobile             = sanitize_text_field( $_POST['rpv-mobile'] ) ?? '';
             $rpv_company_profile    = sanitize_text_field( $_POST['rpv-company-profile'] ) ?? '';
@@ -69,7 +70,7 @@
                 update_field( 'profile_pic', $rpv_profile_pic_id, $post_id );
             }
 
-            echo "Post has been created";
+            
         }
     }
 ?>
