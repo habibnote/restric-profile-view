@@ -13,6 +13,8 @@
 
 namespace Restric_Profile_View;
 
+use Restric_Profile_View\Inc\Acf;
+
 if( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
@@ -60,6 +62,9 @@ final class RPV{
 
         //all dependency
         new Inc\Tgm();
+
+        // register all afc setting
+        new Inc\Acf();
     }
 
     /**

@@ -9,13 +9,61 @@ class Acf {
      */
     function __construct() {
         add_action( 'acf/include_fields', [$this, 'rpv_acf_all_field'] );
+        add_action( 'init', [$this, 'rpv_acf_custom_post_type'] );
     }
 
     /**
-     * acf all register field
+     * Acf regiter custom post type
+     */
+    function rpv_acf_custom_post_type() {
+        register_post_type( 'profiles', array(
+            'labels' => array(
+                'name' => 'Profiles',
+                'singular_name' => 'Profile',
+                'menu_name' => 'Profiles',
+                'all_items' => 'All Profiles',
+                'edit_item' => 'Edit Profile',
+                'view_item' => 'View Profile',
+                'view_items' => 'View Profiles',
+                'add_new_item' => 'Add New Profile',
+                'new_item' => 'New Profile',
+                'parent_item_colon' => 'Parent Profile:',
+                'search_items' => 'Search Profiles',
+                'not_found' => 'No profiles found',
+                'not_found_in_trash' => 'No profiles found in Trash',
+                'archives' => 'Profile Archives',
+                'attributes' => 'Profile Attributes',
+                'insert_into_item' => 'Insert into profile',
+                'uploaded_to_this_item' => 'Uploaded to this profile',
+                'filter_items_list' => 'Filter profiles list',
+                'filter_by_date' => 'Filter profiles by date',
+                'items_list_navigation' => 'Profiles list navigation',
+                'items_list' => 'Profiles list',
+                'item_published' => 'Profile published.',
+                'item_published_privately' => 'Profile published privately.',
+                'item_reverted_to_draft' => 'Profile reverted to draft.',
+                'item_scheduled' => 'Profile scheduled.',
+                'item_updated' => 'Profile updated.',
+                'item_link' => 'Profile Link',
+                'item_link_description' => 'A link to a profile.',
+            ),
+            'public' => true,
+            'hierarchical' => true,
+            'show_in_rest' => true,
+            'menu_icon' => 'dashicons-businessman',
+            'supports' => array(
+                0 => 'title',
+                1 => 'thumbnail',
+            ),
+            'delete_with_user' => false,
+        ) );
+    }
+
+    /**
+     * Acf all register field
      */
     function rpv_acf_all_field() {
-        
+
         if ( ! function_exists( 'acf_add_local_field_group' ) ) {
             return;
         }
