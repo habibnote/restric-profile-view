@@ -53,6 +53,15 @@
                 $rpv_user_id = get_current_user_id();
             }else{
                 
+                $user_name = str_replace( ' ', '_', strtolower( $rpv_name ) );
+
+                $rpv_user_id = wp_create_user( $user_name, $rpv_password, $rpv_email );
+
+                if ( $rpv_user_id ) {
+                    $user = get_user_by( 'id', $rpv_user_id );
+                    $user->add_role( 'subscriber' );
+                }
+
             }
 
             $post_id = wp_insert_post($new_post);
