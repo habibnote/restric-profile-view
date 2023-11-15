@@ -1,4 +1,4 @@
-<div class="rpv-form-container">
+<div action="" class="rpv-form-container">
     <form method="POST" enctype="multipart/form-data">
 
         <div class="rpv-row">

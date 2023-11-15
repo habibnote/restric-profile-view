@@ -1,11 +1,12 @@
 <?php 
-
     require_once ABSPATH . 'wp-admin/includes/image.php';
     require_once ABSPATH . 'wp-admin/includes/file.php';
     require_once ABSPATH . 'wp-admin/includes/media.php';
 
     if( isset( $_POST['rpv-form-submit'] ) ){
         if( wp_verify_nonce( $_POST['_wpnonce'], 'rpv_nonce' ) ) {
+
+            $post_id = '';
 
             $rpv_title              = sanitize_text_field( $_POST['rpv-title'] ) ?? '';
             $rpv_name               = sanitize_text_field( $_POST['rpv-name'] ) ?? '';
@@ -51,21 +52,53 @@
              */
             if( is_user_logged_in() ) {
                 $rpv_user_id = get_current_user_id();
-            }else{
                 
-                $user_name = str_replace( ' ', '_', strtolower( $rpv_name ) );
+                //Check all required field are have value
+                if( $rpv_name != '' && $rpv_company != '' && $rpv_email != '' && $rpv_company_profile != '' ) {
 
-                $rpv_user_id = wp_create_user( $user_name, $rpv_password, $rpv_email );
+                    //create post
+                    $post_id = wp_insert_post($new_post);
+                }else{
 
-                if ( $rpv_user_id ) {
-                    $user = get_user_by( 'id', $rpv_user_id );
-                    $user->add_role( 'subscriber' );
+                    rpv_alert( "Required Fields must be not empty!");
                 }
+                
+            }else{
 
+                //check user input email is avaiable
+                if( rpv_is_email_avaiable( $rpv_email ) ) {
+
+                    //Check all required field are have value
+                    if( $rpv_name != '' && $rpv_company != '' && $rpv_email != '' && $rpv_company_profile != '' && $rpv_password != '' ) {
+
+                        $user_name = str_replace( ' ', '_', strtolower( $rpv_name ) );
+
+                        if( username_exists( $user_name ) ) {
+                            $user_name .= '_';
+                        }
+
+                        $rpv_user_id = wp_create_user( $user_name, $rpv_password, $rpv_email );
+        
+                        if ( $rpv_user_id ) {
+                            $user = get_user_by( 'id', $rpv_user_id );
+                            $user->add_role( 'subscriber' );
+
+                            wp_set_current_user( $rpv_user_id );
+                            wp_set_auth_cookie( $rpv_user_id );
+
+                            //create post
+                            $post_id = wp_insert_post($new_post);
+                        }
+
+                    }else{
+                        rpv_alert( "Required Fields must be not empty!");
+                    }
+                }else {
+                    rpv_alert( "Email is Exist. You can Login with this Eamil or try another one ");
+                }
             }
 
-            $post_id = wp_insert_post($new_post);
-
+            //if post has create
             if( $post_id ) {
                 update_field( 'title', $rpv_title, $post_id );
                 update_field( 'name', $rpv_name, $post_id );
@@ -91,6 +124,11 @@
 
                 //tracking meta
                 update_post_meta( $post_id, 'rpv_user_id', $rpv_user_id );
+            }
+
+            //post has created
+            if( $post_id ){
+                wp_redirect( "http://localhost:10038/profile/" );
             }
         }
     }

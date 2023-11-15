@@ -30,7 +30,7 @@ class Shortcode {
         
         
         include_once( RPV_DIR . "/parts/profiles.php" );
-
+        
         /**
          * Current user has any post or not
          */

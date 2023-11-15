@@ -115,3 +115,30 @@ if( ! function_exists( 'all_post_cretor_ids' ) ){
         return $all_user_id_form_post_meta;
     }
 }
+
+/**
+ * Check user email is avaiale
+ */
+if( ! function_exists( 'rpv_is_email_avaiable' ) ) {
+    
+    function rpv_is_email_avaiable( $email ) {
+
+        $user = get_user_by( 'email', $email );
+
+        if ( $user ) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+
+/**
+ * Alert message
+ */
+if( ! function_exists( 'rpv_alert' ) ) {
+
+    function rpv_alert( $message = '' ) {
+        printf( "<script> alert(' %s '); </script>", $message );
+    }
+}
