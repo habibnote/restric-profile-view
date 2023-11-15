@@ -84,13 +84,10 @@
                                 $user = get_user_by( 'id', $rpv_user_id );
                                 $user->add_role( 'subscriber' );
 
-                                // ob_start();
-                                // wp_set_current_user( $rpv_user_id );
-                                // wp_set_auth_cookie( $rpv_user_id );
-                                // ob_end_clean();
-
                                 //create post
                                 $post_id = wp_insert_post($new_post);
+
+                                rpv_alert( "Profile Added! If you see than login firdst");
                             }
 
                         }else{
@@ -99,6 +96,10 @@
                     }else {
                         rpv_alert( "Email is Exist. You can Login with this Eamil or try another one ");
                     }
+                }
+
+                if( $post_id ) {
+                    rpv_alert( "Profile Added Successfully!");
                 }
 
                 //if post has create
