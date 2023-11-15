@@ -5,8 +5,8 @@
         $args = array(
             'post_type' => 'profiles',
             'posts_per_page' => 1,
-            'order' => 'DESC',
-            'orderby' => 'date',
+            // 'order' => 'Asc',
+            // 'orderby' => 'date',
         );
         
         $query = new WP_Query($args);
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="rpv-content-area">
-
+                        <?php echo get_post_meta( get_the_ID(), 'rpv_user_id', true );?>
                     </div>
                     <div class="rpv-profile-desc">
                         

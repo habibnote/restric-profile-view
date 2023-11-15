@@ -46,6 +46,15 @@
                 'post_type'     => 'profiles'
             );
 
+            /**
+             * Get User ID
+             */
+            if( is_user_logged_in() ) {
+                $rpv_user_id = get_current_user_id();
+            }else{
+                
+            }
+
             $post_id = wp_insert_post($new_post);
 
             if( $post_id ) {
@@ -70,6 +79,9 @@
                 //Update images
                 update_field( 'logo', $rpv_logo_id, $post_id );
                 update_field( 'profile_pic', $rpv_profile_pic_id, $post_id );
+
+                //tracking meta
+                update_post_meta( $post_id, 'rpv_user_id', $rpv_user_id );
             }
         }
     }
