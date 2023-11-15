@@ -61,16 +61,22 @@ if( ! function_exists( 'rpv_loop' ) ) {
                 <div class="rpv-single-profile">
                     <div class="rpv-image-area">
                         <div class="rvp-logo">
-                            <img src="https://corporate-africa.com/wp-content/uploads/2023/08/abulink.png" alt="">
+                            <img src="<?php the_field( 'logo' ); ?>">
                         </div>
                         <div class="rpv-profile-pic">
-                            <img src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg" alt="">
+                            <img src="<?php the_field( 'profile_pic' ); ?>">
                         </div>
                     </div>
                     <div class="rpv-content-area">
-                        <?php echo get_post_meta( get_the_ID(), 'rpv_user_id', true );?>
+                        <?php printf( "<span>%s: %s</span>", __( 'Contact name:', 'restric-p-v' ), get_field( 'name' ) ); ?> 
+                        <?php printf( "<span>%s</span>", get_field( 'job_title' ) ); ?> , 
+                        <?php printf( "<span>%s</span>", get_field( 'country' ) ); ?> .
+                        <?php printf( "<span>%s: %s</span>", __( 'Telephone', 'restric-p-v' ), get_field( 'telecom' ) ); ?>
+                        <?php printf( "<span>%s: %s</span>", __( 'Email', 'restric-p-v' ), get_field( 'email' ) ); ?>
+
                     </div>
                     <div class="rpv-profile-desc">
+                        <?php printf( "<span>%s: %s</span>", __( 'Profile', 'restric-p-v' ), get_field( 'company_profile' ) ); ?>
                         
                     </div>
                     <div class="rpv-start-chat">

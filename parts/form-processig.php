@@ -84,8 +84,10 @@
                                 $user = get_user_by( 'id', $rpv_user_id );
                                 $user->add_role( 'subscriber' );
 
+                                // ob_start();
                                 // wp_set_current_user( $rpv_user_id );
                                 // wp_set_auth_cookie( $rpv_user_id );
+                                // ob_end_clean();
 
                                 //create post
                                 $post_id = wp_insert_post($new_post);
@@ -127,14 +129,8 @@
                     update_post_meta( $post_id, 'rpv_user_id', $rpv_user_id );
                 }
 
-                //if post has create
-                if( $post_id ) {
-                    echo "Post is created";
-                    // wp_redirect( "http://localhost:10038" );
-                    // exit;
-                }
-
             }
+
         }
     endif;
 ?>
