@@ -51,7 +51,7 @@
                 ?>
                     <div class="rpv-row">
                         <label for="rpv-password"> <?php _e( 'Password:  <span class="rpv-req">*</span>', 'restric-p-v' );?></label>
-                        <input type="password" name="rpv-password" id="rpv-password" placeholder="It will be your Login Password" required>
+                        <input type="password" name="rpv-password" id="rpv-password" placeholder="It will be your Login Password">
                     </div>
                 <?php 
             }

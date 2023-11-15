@@ -1,8 +1,8 @@
 <?php 
 
-    // require_once ABSPATH . 'wp-admin/includes/image.php';
-    // require_once ABSPATH . 'wp-admin/includes/file.php';
-    // require_once ABSPATH . 'wp-admin/includes/media.php';
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    require_once ABSPATH . 'wp-admin/includes/media.php';
 
     if( isset( $_POST['rpv-form-submit'] ) ){
         if( wp_verify_nonce( $_POST['_wpnonce'], 'rpv_nonce' ) ) {
@@ -14,8 +14,6 @@
             $rpv_city               = sanitize_text_field( $_POST['rpv-city'] ) ?? '';
             $rpv_country            = sanitize_text_field( $_POST['rpv-country'] ) ?? '';
             $rpv_job_title          = sanitize_text_field( $_POST['rpv-job-title'] ) ?? '';
-            $rpv_email              = sanitize_text_field( $_POST['rpv-email'] ) ?? '';
-            $rpv_password           = sanitize_text_field( $_POST['rpv-password'] ) ?? '';
             $rpv_telicom            = sanitize_text_field( $_POST['rpv-telicom'] ) ?? '';
             $rpv_mobile             = sanitize_text_field( $_POST['rpv-mobile'] ) ?? '';
             $rpv_company_profile    = sanitize_text_field( $_POST['rpv-company-profile'] ) ?? '';
@@ -25,6 +23,10 @@
             $rpv_countries_tar      = sanitize_text_field( $_POST['rpv-countries-tar'] ) ?? '';
             $rpv_industriy_sector   = sanitize_text_field( $_POST['rpv-industriy-sector'] ) ?? '';
             $rpv_network_event      = sanitize_text_field( $_POST['rpv-network-event'] ) ?? '';
+
+            //retrive email and password
+            $rpv_email              = sanitize_email( $_POST['rpv-email'] ) ?? '';
+            $rpv_password           = $_POST['rpv-password'] ?? '';
             
             //retrive logo and save it on wordpress media
             $rpv_logo               = $_FILES['rpv-logo'] ?? '';
