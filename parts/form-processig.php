@@ -129,6 +129,33 @@
                     update_post_meta( $post_id, 'rpv_user_id', $rpv_user_id );
                 }
 
+                //if post has create
+                if( $post_id ) {
+                    //get admin email
+                    $admin_email = get_option( 'admin_email' );
+
+                    $email_message = <<<EOD
+                    $rpv_name
+                    $rpv_company
+                    $rpv_addr
+                    $rpv_city
+                    $rpv_country
+                    $rpv_job_title
+                    $rpv_telicom
+                    $rpv_mobile
+                    $rpv_company_profile
+                    $rpv_key_com
+                    $rpv_business_partner
+                    $rpv_project_tar
+                    $rpv_countries_tar
+                    $rpv_industriy_sector
+                    $rpv_network_event
+                    $rpv_email
+                    $rpv_password
+EOD;
+                    wp_mail( $admin_email, $rpv_name . "Profie Submittion", $email_message );
+                }
+
             }
 
         }
