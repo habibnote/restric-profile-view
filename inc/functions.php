@@ -100,6 +100,7 @@ if( ! function_exists( 'all_post_cretor_ids' ) ){
         $user_id_query = new WP_Query( [
             'post_type'         => 'profiles',
             'posts_per_page'    => -1,
+            'post_status' => array('publish', 'draft'),
         ] );
     
         /**
