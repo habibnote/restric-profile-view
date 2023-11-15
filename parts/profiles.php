@@ -1,58 +1,41 @@
+<?php 
+    
+    $user_id_query = new WP_Query( [
+        'post_type'         => 'profiles',
+        'posts_per_page'    => -1,
+    ] );
+
+    /**
+     * Collect all user id that we will saved as post meta for tracking who created post
+     */
+    $all_user_id_form_post_meta = [];
+
+    while( $user_id_query->have_posts() ) {
+        $user_id_query->the_post();
+
+        //get user id from post
+        $user_id = get_post_meta( get_the_ID(), 'rpv_user_id', true );
+
+        if( $user_id ) {
+            array_push( $all_user_id_form_post_meta, $user_id );
+        }
+    }
+?>
+
 
 <div class="rpv-profiles-container">
 
-    <?php 
-        $args = array(
-            'post_type' => 'profiles',
-            'posts_per_page' => 1,
-            // 'order' => 'Asc',
-            // 'orderby' => 'date',
-        );
-        
-        $query = new WP_Query($args);
-        while( $query->have_posts() ) {
-            $query->the_post();
-            ?> 
-                <div class="rpv-single-profile">
-                    <div class="rpv-image-area">
-                        <div class="rvp-logo">
-                            <img src="https://corporate-africa.com/wp-content/uploads/2023/08/abulink.png" alt="">
-                        </div>
-                        <div class="rpv-profile-pic">
-                            <img src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="rpv-content-area">
-                        <?php echo get_post_meta( get_the_ID(), 'rpv_user_id', true );?>
-                    </div>
-                    <div class="rpv-profile-desc">
-                        
-                    </div>
-                    <div class="rpv-start-chat">
-                        <a href="https://corporate-africa.com/send-message/"> <?php _e( 'Start chat', 'restric-p-v' ) ?> </a>
-                    </div>
-                </div>
-            <?php 
+    <?php
+        if( array_search( get_current_user_id() ,$all_user_id_form_post_meta ) !== false ) {
+            /**
+             * Load all Posts
+             */
+            rpv_loop( 'profiles', -1 ); 
+        }else{
+            /**
+             * load only one posts
+             */
+            rpv_loop( 'profiles' );
         }
     ?>
-
-    <!-- <div class="rpv-single-profile">
-        <div class="rpv-image-area">
-            <div class="rvp-logo">
-                <img src="https://corporate-africa.com/wp-content/uploads/2023/08/abulink.png" alt="">
-            </div>
-            <div class="rpv-profile-pic">
-                <img src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg" alt="">
-            </div>
-        </div>
-        <div class="rpv-content-area">
-
-        </div>
-        <div class="rpv-profile-desc">
-            
-        </div>
-        <div class="rpv-start-chat">
-        <a href="https://corporate-africa.com/send-message/"> <?php _e( 'Start chat', 'restric-p-v' ) ?> </a>
-        </div>
-    </div> -->
 </div>

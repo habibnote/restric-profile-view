@@ -26,6 +26,8 @@ class Shortcode {
      * Main shortcode init
     */
     function rpv_main_shortcode() {
+
+        
         
         include_once( RPV_DIR . "/parts/profiles.php" );
         include_once( RPV_DIR . "/parts/form.php" );
