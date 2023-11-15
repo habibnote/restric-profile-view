@@ -84,3 +84,34 @@ if( ! function_exists( 'rpv_loop' ) ) {
     }
 }
 
+/**
+ * all post author
+ */
+if( ! function_exists( 'all_post_cretor_ids' ) ){
+
+    function all_post_cretor_ids() {
+
+        $user_id_query = new WP_Query( [
+            'post_type'         => 'profiles',
+            'posts_per_page'    => -1,
+        ] );
+    
+        /**
+         * Collect all user id that we will saved as post meta for tracking who created post
+         */
+        $all_user_id_form_post_meta = [];
+    
+        while( $user_id_query->have_posts() ) {
+            $user_id_query->the_post();
+    
+            //get user id from post
+            $user_id = get_post_meta( get_the_ID(), 'rpv_user_id', true );
+    
+            if( $user_id ) {
+                array_push( $all_user_id_form_post_meta, $user_id );
+            }
+        }
+
+        return $all_user_id_form_post_meta;
+    }
+}

@@ -30,7 +30,15 @@ class Shortcode {
         
         
         include_once( RPV_DIR . "/parts/profiles.php" );
-        include_once( RPV_DIR . "/parts/form.php" );
+
+        /**
+         * Current user has any post or not
+         */
+        if( ! ( array_search( get_current_user_id() ,all_post_cretor_ids() ) !== false ) ) {
+
+            include_once( RPV_DIR . "/parts/form.php" );
+        }
+
         include_once( RPV_DIR . "/parts/form-processig.php" );
     }
 
