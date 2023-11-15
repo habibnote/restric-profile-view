@@ -1,6 +1,6 @@
-<div action="" class="rpv-form-container">
+<div class="rpv-form-container">
     <form method="POST" enctype="multipart/form-data">
-
+        
         <div class="rpv-row">
             <label for="rpv-title"> <?php _e( 'Title:', 'restric-p-v' );?></label>
             <input type="text" placeholder="Mr, Ms, Mrs, Dr" name="rpv-title" id="rpv-title">
