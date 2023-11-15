@@ -1,0 +1,37 @@
+.rpv-profiles-container{
+    width: 100%;
+}
+.rpv-single-profile{
+    padding: 20px;
+    margin-bottom: 35px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+.rpv-image-area{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 35px;
+}
+.rpv-image-area .rvp-logo img{
+    width: auto;
+    height: 90px;
+}
+.rpv-image-area .rpv-profile-pic img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #333;
+}
+
+.rpv-start-chat a{
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #000205FC;
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: none !important;
+    border-radius: 5px;
+    font-weight: bold;
+}

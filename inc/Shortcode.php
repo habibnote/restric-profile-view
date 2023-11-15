@@ -17,6 +17,7 @@ class Shortcode {
      */
     function rpv_load_assets() {
         if( ! is_admin() ) {
+            wp_enqueue_style( 'front', RPV_ASSET . '/front/css/front.css', array(), time() );
             wp_enqueue_style( 'shortcode-form', RPV_ASSET . '/front/css/form.css', array(), time() );
         } ;
     }
@@ -26,6 +27,7 @@ class Shortcode {
     */
     function rpv_main_shortcode() {
         
+        include_once( RPV_DIR . "/parts/profiles.php" );
         include_once( RPV_DIR . "/parts/form.php" );
         include_once( RPV_DIR . "/parts/form-processig.php" );
     }
