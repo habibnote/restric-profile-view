@@ -10,6 +10,7 @@ class Acf {
     function __construct() {
         add_action( 'acf/include_fields', [$this, 'rpv_acf_all_field'] );
         add_action( 'init', [$this, 'rpv_acf_custom_post_type'] );
+        add_filter( 'acf/settings/show_admin', '__return_false' );
     }
 
     /**

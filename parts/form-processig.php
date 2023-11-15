@@ -71,8 +71,6 @@
                 update_field( 'logo', $rpv_logo_id, $post_id );
                 update_field( 'profile_pic', $rpv_profile_pic_id, $post_id );
             }
-
-            
         }
     }
 ?>
