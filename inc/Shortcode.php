@@ -27,8 +27,6 @@ class Shortcode {
     */
     function rpv_main_shortcode() {
 
-        
-        
         include_once( RPV_DIR . "/parts/profiles.php" );
         
         /**

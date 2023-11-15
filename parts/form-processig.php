@@ -59,6 +59,8 @@
 
                         //create post
                         $post_id = wp_insert_post($new_post);
+
+                        rpv_alert( "Profile Added Successfully! To add it on this page need to approve from adminstration");
                     }else{
 
                         rpv_alert( "Required Fields must be not empty!");
@@ -98,11 +100,7 @@
                     }
                 }
 
-                if( $post_id ) {
-                    rpv_alert( "Profile Added Successfully!");
-                }
-
-                //if post has create
+                //if post has created and update all meta
                 if( $post_id ) {
                     update_field( 'title', $rpv_title, $post_id );
                     update_field( 'name', $rpv_name, $post_id );
@@ -130,7 +128,7 @@
                     update_post_meta( $post_id, 'rpv_user_id', $rpv_user_id );
                 }
 
-                //if post has create
+                //if post has create than sent mail into admin email
                 if( $post_id ) {
                     //get admin email
                     $admin_email = get_option( 'admin_email' );
@@ -155,6 +153,18 @@
                     $rpv_password
 EOD;
                     wp_mail( $admin_email, $rpv_name . "Profie Submittion", $email_message );
+                }
+
+                //redirect
+                if( $post_id ) {
+
+                    if( is_user_logged_in() ) {
+                        printf( '<script>window.location.href = "https://corporate-africa.com/africa-trade-investment-mission/"</script>' );
+                    }else {
+                        printf( '<script>window.location.href = "https://corporate-africa.com/login/"</script>' );
+                        
+                    }
+
                 }
 
             }
