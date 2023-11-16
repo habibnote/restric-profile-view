@@ -86,7 +86,7 @@ if( ! function_exists( 'rpv_loop' ) ) {
 
             <?php 
         }
-
+        wp_reset_postdata();
     }
 }
 
@@ -118,6 +118,7 @@ if( ! function_exists( 'all_post_cretor_ids' ) ){
                 array_push( $all_user_id_form_post_meta, $user_id );
             }
         }
+        wp_reset_postdata();
 
         return $all_user_id_form_post_meta;
     }
