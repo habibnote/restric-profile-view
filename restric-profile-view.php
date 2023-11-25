@@ -38,7 +38,7 @@ final class RPV{
     private function include() {
         require_once( dirname( __FILE__ ) . '/inc/functions.php' );
         require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
-        require_once( dirname( __FILE__ ) . '/lib/class-tgm-plugin-activation.php' );
+        // require_once( dirname( __FILE__ ) . '/lib/class-tgm-plugin-activation.php' );
     }
 
     /**
