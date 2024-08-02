@@ -45,12 +45,20 @@ if( ! function_exists( 'rvp_get_attachment_id' ) ) {
  */
 if( ! function_exists( 'rpv_loop' ) ) {
 
-    function rpv_loop( $post_type, $posts_per_page = 1 ) {
+    function rpv_loop( $post_type, $posts_per_page = 1, $post_meta=false, $meta_query=[] ) {
 
-        $args = array(
-            'post_type'         => $post_type,
-            'posts_per_page'    => $posts_per_page,
-        );
+        if( $post_meta ) {
+            $args = array(
+                'post_type'         => $post_type,
+                'posts_per_page'    => $posts_per_page,
+                'meta_query'        => $meta_query
+            );
+        } else {
+            $args = array(
+                'post_type'         => $post_type,
+                'posts_per_page'    => $posts_per_page,
+            );
+        }
 
         $query = new WP_Query($args);
 

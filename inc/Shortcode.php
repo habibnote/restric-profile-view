@@ -40,7 +40,7 @@ class Shortcode {
                     </select>
                 </div>
                 <div class="single-col">
-                    <button type="submit" name="filter">Filter</button>
+                    <button type="submit" name="filter" value="true">Filter</button>
                 </div>
             </form>
         <?php 
