@@ -25,24 +25,21 @@ class Shortcode {
                     <label>Region</label>
                     <select name="region">
                         <option value="">Select</option>
-                        <option value="Dhaka">Dhaka</option>
-                        <option value="Savar">Savar</option>
+                        <?php get_meta_data( 'city' );?>
                     </select>
                 </div>
                 <div class="single-col">
                     <label>Industry</label>
                     <select name="industry">
                         <option value="">Select</option>
-                        <option value="Wedevs">Wedevs</option>
-                        <option value="Codexpert">Codexpert</option>
+                        <?php get_meta_data( 'company' );?>
                     </select>
                 </div>
                 <div class="single-col">
                     <label>Country</label>
                     <select name="country">
                         <option value="">Select</option>
-                        <option value="Bangladesh">Bangladesh</option>
-                        <option value="India">India</option>
+                        <?php get_meta_data( 'country' );?>
                     </select>
                 </div>
                 <div class="single-col">

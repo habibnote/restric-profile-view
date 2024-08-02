@@ -158,3 +158,41 @@ if( ! function_exists( 'rpv_alert' ) ) {
         printf( "<script> alert(' %s '); </script>", $message );
     }
 }
+
+
+/**
+ * Get specific post meta
+ */
+if( ! function_exists( 'get_specific_post_meta' ) ) {
+    function get_specific_post_meta( $meta_key ) {
+        $args = array(
+            'post_type'         => 'profiles',
+            'posts_per_page'    => -1,
+        );
+
+        $query = new WP_Query( $args );
+
+        $all_meta_values = [];
+
+        while( $query->have_posts() ) {
+            $query->the_post();
+
+            $all_meta_values[] = get_field( $meta_key, get_the_ID() );
+        }
+        wp_reset_postdata();
+
+        return $all_meta_values;
+    }
+}
+
+/**
+ * get data
+ */
+if( ! function_exists( 'get_meta_data' ) ) {
+    function get_meta_data( $meta_key ) {
+        $options = get_specific_post_meta( $meta_key );
+        foreach( $options as $option ) {
+            printf( "<option value='%s'>%s</option>", $option, $option );
+        }
+    }
+}
