@@ -1,13 +1,13 @@
 <?php 
 /*
  * Plugin Name:       Restric Profile View
- * Plugin URI:        https://example.com/plugins/the-basics/
+ * Plugin URI:        https://me.habibnote.com/contact
  * Description:       Restric Profile View Plugin View everthing after submittion form into page.
  * Version:           0.0.1
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Md. Habib
- * Author URI:        https://me.habibnote.com
+ * Author URI:        https://me.habibnote.com/contact
  * Text Domain:       restric-p-v
 */
 

@@ -11,6 +11,40 @@ class Shortcode {
         add_action( 'wp_enqueue_scripts', [$this, 'rpv_load_assets'] );
         add_shortcode( 'rpv_shortcode', [$this, 'rpv_main_shortcode'] );
         add_shortcode( 'rpv_form', [$this, 'rpv_form_shortcode'] );
+        add_shortcode( 'rpv_filter', [$this, 'rpv_filter'] );
+    }
+
+    /**
+     * Filter Form
+     */
+    public function rpv_filter() {
+        ob_start();
+        ?>  
+            <form class="filter-form" method="GET">
+                <div class="single-col">
+                    <label>Region</label>
+                    <select name="region">
+                        <option value="">Select</option>
+                    </select>
+                </div>
+                <div class="single-col">
+                    <label>Industry</label>
+                    <select name="industry">
+                        <option value="">Select</option>
+                    </select>
+                </div>
+                <div class="single-col">
+                    <label>Country</label>
+                    <select name="country">
+                        <option value="">Select</option>
+                    </select>
+                </div>
+                <div class="single-col">
+                    <button type="submit" name="filter">Filter</button>
+                </div>
+            </form>
+        <?php 
+    
     }
 
     /**
@@ -43,7 +77,6 @@ class Shortcode {
      * Main shortcode init
     */
     function rpv_main_shortcode() {
-
         include_once( RPV_DIR . "/parts/profiles.php" );
     }
 

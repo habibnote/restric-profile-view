@@ -64,3 +64,19 @@
     text-transform: capitalize;
     font-size: 16px;
 }
+
+
+
+/* Filter form */
+.filter-form {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+.filter-form .single-col {
+    width: 20%;
+    margin-right: 10px;
+}
+.filter-form .single-col label {
+    font-weight: 700;
+}
