@@ -7,10 +7,10 @@
              /**
              * Load all Filters Posts
              */
-            $region     = sanitize_text_field( $_GET['region'] );
-            $industry   = sanitize_text_field( $_GET['industry'] );
-            $country    = sanitize_text_field( $_GET['country'] );
-            if( $_GET['filter'] == true ) {
+            if( isset( $_GET['filter'] ) && $_GET['filter'] == 'filter_true' ) {
+                $region     = sanitize_text_field( $_GET['region'] );
+                $industry   = sanitize_text_field( $_GET['industry'] );
+                $country    = sanitize_text_field( $_GET['country'] );
                 rpv_loop( 
                     'profiles', 
                     -1, 

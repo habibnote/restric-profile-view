@@ -25,22 +25,28 @@ class Shortcode {
                     <label>Region</label>
                     <select name="region">
                         <option value="">Select</option>
+                        <option value="Dhaka">Dhaka</option>
+                        <option value="Savar">Savar</option>
                     </select>
                 </div>
                 <div class="single-col">
                     <label>Industry</label>
                     <select name="industry">
                         <option value="">Select</option>
+                        <option value="Wedevs">Wedevs</option>
+                        <option value="Codexpert">Codexpert</option>
                     </select>
                 </div>
                 <div class="single-col">
                     <label>Country</label>
                     <select name="country">
                         <option value="">Select</option>
+                        <option value="Bangladesh">Bangladesh</option>
+                        <option value="India">India</option>
                     </select>
                 </div>
                 <div class="single-col">
-                    <button type="submit" name="filter" value="true">Filter</button>
+                    <button type="submit" name="filter" value="filter_true">Filter</button>
                 </div>
             </form>
         <?php 
